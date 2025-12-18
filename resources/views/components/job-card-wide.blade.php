@@ -10,7 +10,11 @@
 
         <h3 class="font-bold text-xl mt-3 group-hover:text-blue-800 transition-colors duration-300">{{ $job->title }}</h3>
 
-        <p class="text-sm text-gray-400 mt-auto">{{ $job->salary }}</p>
+        <p class="text-sm text-gray-400 mt-2">{{ Str::limit($job->description, 300) }}</p>
+
+        <p class="text-sm text-gray-400 mt-auto font-semibold text-green-600 dark:text-green-400">
+            {{ Str::startsWith($job->salary, '$') ? $job->salary : '$' . number_format($job->salary) }}
+        </p>
     </div>
 
     <div>

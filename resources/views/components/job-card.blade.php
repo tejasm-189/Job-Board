@@ -5,7 +5,10 @@
 
     <div class="py-8">
         <h3 class="group-hover:text-blue-800 text-xl font-bold transition-colors duration-300">{{ $job->title }}</h3>
-        <p class="text-sm mt-4">{{ $job->salary }}</p>
+        <p class="text-xs text-gray-500 mt-2">{{ Str::limit($job->description, 100) }}</p>
+        <p class="text-sm mt-4 font-semibold text-green-600 dark:text-green-400">
+            {{ Str::startsWith($job->salary, '$') ? $job->salary : '$' . number_format($job->salary) }}
+        </p>
     </div>
 
     <div class="flex justify-between items-center mt-auto">
