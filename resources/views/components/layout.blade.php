@@ -9,8 +9,8 @@
 </head>
 
 <body class="bg-white dark:bg-black text-black dark:text-white font-sans antialiased">
-    <div class="max-w-[986px] mx-auto px-10 py-10">
-        <nav class="flex justify-between items-center mb-8 border-b border-black/10 dark:border-white/10 pb-4">
+    <div class="px-10 py-6">
+        <nav class="flex justify-between items-center mb-4 border-b border-black/10 dark:border-white/10 pb-4">
             <div>
                 <a href="/" class="text-xl font-bold">Job Board</a>
             </div>

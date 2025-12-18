@@ -29,6 +29,10 @@ class JobController extends Controller
             $jobs->where('experience', request('experience'));
         }
 
+        if (request('salary')) {
+            $jobs->where('salary', '>=', (int) request('salary'));
+        }
+
         $jobs = $jobs->get();
 
         return view('welcome', [
