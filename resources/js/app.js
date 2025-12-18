@@ -16,3 +16,16 @@ window.toggleTheme = function() {
         localStorage.theme = 'dark';
     }
 }
+
+// Auto-submit form when radio buttons change
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('#search-form');
+    if (form) {
+        const radios = form.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                form.submit();
+            });
+        });
+    }
+});
