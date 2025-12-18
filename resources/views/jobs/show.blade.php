@@ -1,5 +1,24 @@
 <x-layout>
     <div class="space-y-10">
+        <nav class="flex text-sm font-medium text-gray-500 dark:text-gray-400 mb-4" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-2">
+                <li>
+                    <a href="/" class="hover:text-blue-600 dark:hover:text-white transition-colors">Home</a>
+                </li>
+                <li>
+                    <span class="mx-2 text-gray-400">/</span>
+                </li>
+                <li>
+                    <a href="/" class="hover:text-blue-600 dark:hover:text-white transition-colors">Jobs</a>
+                </li>
+                <li>
+                    <span class="mx-2 text-gray-400">/</span>
+                </li>
+                <li aria-current="page">
+                    <span class="text-black dark:text-white font-semibold">{{ $job->title }}</span>
+                </li>
+            </ol>
+        </nav>
         <section class="text-center pt-6">
             <div class="relative inline-block">
                 <img class="rounded-xl border border-gray-700 mx-auto mb-6" src="https://picsum.photos/seed/{{ $job->id }}/100/100" alt="">

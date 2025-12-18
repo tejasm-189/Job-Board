@@ -2,8 +2,26 @@
     <div class="space-y-10">
         <section class="text-center pt-6">
             <h1 class="font-bold text-4xl mb-4">Let's find your next job</h1>
-            <form action="" class="max-w-xl mx-auto">
-                <input type="text" placeholder="I'm looking for..." class="w-full rounded-xl bg-gray-400/10 dark:bg-white/5 border-black/10 dark:border-white/10 px-5 py-4 w-full max-w-xl border">
+            <form action="/" method="GET" class="mt-6 max-w-2xl mx-auto space-y-4 md:space-y-0 md:flex md:gap-x-4">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="I'm looking for..." class="w-full rounded-xl bg-white/5 border-white/10 px-5 py-4 border border-gray-200 dark:border-white/10 text-black dark:text-white placeholder-gray-500 focus:border-blue-600 focus:ring-blue-600">
+
+                <select name="category" class="w-full md:w-auto rounded-xl bg-white/5 border-white/10 px-5 py-4 border border-gray-200 dark:border-white/10 text-gray-400 dark:text-white focus:border-blue-600 focus:ring-blue-600">
+                    <option value="" class="text-gray-900">Category</option>
+                    @foreach(\App\Models\Job::$categories as $category)
+                    <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }} class="text-gray-900">{{ $category }}</option>
+                    @endforeach
+                </select>
+
+                <select name="experience" class="w-full md:w-auto rounded-xl bg-white/5 border-white/10 px-5 py-4 border border-gray-200 dark:border-white/10 text-gray-400 dark:text-white focus:border-blue-600 focus:ring-blue-600">
+                    <option value="" class="text-gray-900">Experience</option>
+                    @foreach(\App\Models\Job::$experience as $experience)
+                    <option value="{{ $experience }}" {{ request('experience') == $experience ? 'selected' : '' }} class="text-gray-900">{{ ucfirst($experience) }}</option>
+                    @endforeach
+                </select>
+
+                <button type="submit" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-colors">
+                    Search
+                </button>
             </form>
         </section>
 
