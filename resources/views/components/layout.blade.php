@@ -8,9 +8,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-white text-slate-900 font-sans antialiased">
+<body class="bg-white dark:bg-black text-black dark:text-white font-sans antialiased">
     <div class="max-w-[986px] mx-auto px-10 py-10">
-        <nav class="flex justify-between items-center mb-8 border-b border-gray-200 pb-4">
+        <nav class="flex justify-between items-center mb-8 border-b border-black/10 dark:border-white/10 pb-4">
             <div>
                 <a href="/" class="text-xl font-bold">Job Board</a>
             </div>
@@ -21,6 +21,9 @@
                 <a href="#">Companies</a>
             </div>
             <div class="space-x-4 font-bold">
+                <button onclick="toggleTheme()" class="bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 px-3 py-1 rounded-md transition-colors">
+                    Theme
+                </button>
                 <a href="#">Post a Job</a>
             </div>
         </nav>
