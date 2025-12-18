@@ -13,3 +13,5 @@ Route::get('/', function () {
         'tags' => Job::$categories,
     ]);
 });
+
+Route::get('/jobs/{job}', [App\Http\Controllers\JobController::class, 'show']);
