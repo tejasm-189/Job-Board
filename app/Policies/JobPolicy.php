@@ -18,7 +18,7 @@ class JobPolicy
 
     public function apply(User $user, Job $job): bool
     {
-        return true;
+        return ! $job->applications()->where('user_id', $user->id)->exists();
     }
 
     /**

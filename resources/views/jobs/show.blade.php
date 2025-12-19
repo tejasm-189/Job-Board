@@ -44,9 +44,20 @@
                     Location: <span class="text-black dark:text-white font-bold">{{ $job->location }}</span>
                 </div>
 
+                @can('apply', $job)
                 <a href="/jobs/{{ $job->id }}/application" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
                     Apply Now
                 </a>
+                @else
+                @auth
+                <div class="text-center text-sm font-bold text-gray-500">You have already applied</div>
+                @endauth
+                @guest
+                <a href="/login" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+                    Log In to Apply
+                </a>
+                @endguest
+                @endcan
             </div>
         </section>
 
