@@ -19,6 +19,8 @@ Route::middleware('auth', 'employer')->group(function () {
     Route::get('/my-jobs', [App\Http\Controllers\MyJobController::class, 'index']);
     Route::get('/jobs/create', [App\Http\Controllers\MyJobController::class, 'create']);
     Route::post('/my-jobs', [App\Http\Controllers\MyJobController::class, 'store']);
+    Route::get('/my-jobs/{job}/edit', [App\Http\Controllers\MyJobController::class, 'edit']);
+    Route::patch('/my-jobs/{job}', [App\Http\Controllers\MyJobController::class, 'update']);
 });
 
 Route::get('/jobs/{job}/application', [App\Http\Controllers\JobApplicationController::class, 'create'])->middleware('auth');
