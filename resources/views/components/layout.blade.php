@@ -27,11 +27,23 @@
                 <a href="#">Salaries</a>
                 <a href="#">Companies</a>
             </div>
-            <div class="space-x-4 font-bold">
+            <div class="space-x-4 font-bold flex items-center">
                 <button onclick="toggleTheme()" class="bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 px-3 py-1 rounded-md transition-colors">
                     Theme
                 </button>
                 <a href="#">Post a Job</a>
+
+                @auth
+                <form method="POST" action="/logout">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-xs font-bold text-red-500 hover:text-red-600 transition-colors">Log Out</button>
+                </form>
+                @endauth
+
+                @guest
+                <a href="/login" class="text-sm font-bold hover:text-blue-600 transition-colors">Log In</a>
+                @endguest
             </div>
         </nav>
 
