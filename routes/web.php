@@ -15,6 +15,11 @@ Route::delete('/logout', [App\Http\Controllers\AuthController::class, 'destroy']
 Route::get('/employer', [App\Http\Controllers\EmployerController::class, 'create'])->middleware('auth');
 Route::post('/employer', [App\Http\Controllers\EmployerController::class, 'store'])->middleware('auth');
 
+Route::middleware('auth', 'employer')->group(function () {
+    Route::get('/jobs/create', [App\Http\Controllers\MyJobController::class, 'create']);
+    Route::post('/my-jobs', [App\Http\Controllers\MyJobController::class, 'store']);
+});
+
 Route::get('/jobs/{job}/application', [App\Http\Controllers\JobApplicationController::class, 'create'])->middleware('auth');
 Route::post('/jobs/{job}/application', [App\Http\Controllers\JobApplicationController::class, 'store'])->middleware('auth');
 
