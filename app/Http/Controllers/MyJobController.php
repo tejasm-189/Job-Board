@@ -14,6 +14,17 @@ class MyJobController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $validatedAttributes = $request->validate([
+            'title' => ['required'],
+            'salary' => ['required'],
+            'location' => ['required'],
+            'description' => ['required'],
+            'category' => ['required', 'in:' . implode(',', Job::$categories)],
+            'experience' => ['required', 'in:' . implode(',', Job::$experience)],
+        ]);
+
+        $request->user()->employer->jobs()->create($validatedAttributes);
+
+        return redirect('/')->with('success', 'Job posted successfully!');
     }
 }
