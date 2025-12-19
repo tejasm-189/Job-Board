@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use Illuminate\Support\Facades\Gate;
 
 class MyJobController extends Controller
 {
@@ -41,23 +42,14 @@ class MyJobController extends Controller
     }
     public function edit(Job $job)
     {
-        // Simple authorization check (Policy comes later in task 144)
-        /** @var \App\Models\User $user */
-        $user = auth()->user();
-        if ($user->employer->id !== $job->employer_id) {
-            abort(403);
-        }
+        Gate::authorize('update', $job);
 
         return view('my_job.edit', ['job' => $job]);
     }
 
     public function update(Request $request, Job $job)
     {
-        /** @var \App\Models\User $user */
-        $user = auth()->user();
-        if ($user->employer->id !== $job->employer_id) {
-            abort(403);
-        }
+        Gate::authorize('update', $job);
 
         $validatedAttributes = $request->validate([
             'title' => ['required'],

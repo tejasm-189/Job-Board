@@ -40,9 +40,17 @@ class JobPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Job $job): bool
+    public function update(User $user, Job $job): bool|Response
     {
-        return false;
+        if ($job->employer->user_id !== $user->id) {
+            return false;
+        }
+
+        if ($job->applications()->count() > 0) {
+            return Response::deny('You cannot edit a job with applications.');
+        }
+
+        return true;
     }
 
     /**
