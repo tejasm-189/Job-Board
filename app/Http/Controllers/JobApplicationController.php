@@ -21,11 +21,16 @@ class JobApplicationController extends Controller
 
         $validatedAttributes = $request->validate([
             'expected_salary' => ['required', 'min:1', 'numeric'],
+            'cv' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:2048'] // Ensure file rules are present
         ]);
+
+        $file = $request->file('cv');
+        $path = $file->store('cvs'); // Store in 'cvs' folder in default disk
 
         $job->applications()->create([
             'user_id' => $request->user()->id,
             'expected_salary' => $validatedAttributes['expected_salary'],
+            'cv_path' => $path,
         ]);
 
         return redirect('/jobs/' . $job->id);
