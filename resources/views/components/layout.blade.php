@@ -31,7 +31,7 @@
                 <button onclick="toggleTheme()" class="bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 px-3 py-1 rounded-md transition-colors">
                     Theme
                 </button>
-                <a href="#">Post a Job</a>
+                <a href="/jobs/create">Post a Job</a>
 
                 @auth
                 <form method="POST" action="/logout">

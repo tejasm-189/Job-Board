@@ -12,6 +12,9 @@ Route::get('/login', [App\Http\Controllers\AuthController::class, 'create'])->na
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'store']);
 Route::delete('/logout', [App\Http\Controllers\AuthController::class, 'destroy']);
 
+Route::get('/employer', [App\Http\Controllers\EmployerController::class, 'create'])->middleware('auth');
+Route::post('/employer', [App\Http\Controllers\EmployerController::class, 'store'])->middleware('auth');
+
 Route::get('/jobs/{job}/application', [App\Http\Controllers\JobApplicationController::class, 'create'])->middleware('auth');
 Route::post('/jobs/{job}/application', [App\Http\Controllers\JobApplicationController::class, 'store'])->middleware('auth');
 
