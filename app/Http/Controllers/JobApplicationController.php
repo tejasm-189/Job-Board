@@ -14,6 +14,15 @@ class JobApplicationController extends Controller
 
     public function store(Job $job, Request $request)
     {
-        //
+        $validatedAttributes = $request->validate([
+            'expected_salary' => ['required', 'min:1', 'numeric'],
+        ]);
+
+        $job->applications()->create([
+            'user_id' => $request->user()->id,
+            'expected_salary' => $validatedAttributes['expected_salary'],
+        ]);
+
+        return redirect('/jobs/' . $job->id);
     }
 }
