@@ -15,6 +15,11 @@ class Job extends Model
         return $this->belongsTo(Employer::class);
     }
 
+    public function applications()
+    {
+        return $this->hasMany(JobApplication::class);
+    }
+
     public static array $experience =  ['entry', 'intermediate', 'senior'];
     public static array $categories =  ['IT', 'Finance', 'Sales', 'Marketing'];
 
