@@ -48,6 +48,18 @@
         </nav>
 
         <main>
+            @if(session('success'))
+            <div role="alert" class="rounded-xl border border-green-600 bg-green-100 dark:bg-green-900/50 px-4 py-3 text-green-700 dark:text-green-100 mb-8">
+                <p class="font-bold">Success!</p>
+                <p class="text-sm">{{ session('success') }}</p>
+            </div>
+            @endif
+            @if(session('error'))
+            <div role="alert" class="rounded-xl border border-red-600 bg-red-100 dark:bg-red-900/50 px-4 py-3 text-red-700 dark:text-red-100 mb-8">
+                <p class="font-bold">Error!</p>
+                <p class="text-sm">{{ session('error') }}</p>
+            </div>
+            @endif
             {{ $slot }}
         </main>
     </div>
