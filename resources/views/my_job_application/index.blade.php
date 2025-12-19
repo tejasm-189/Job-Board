@@ -15,9 +15,19 @@
             </div>
 
             <div>
-                <div>
-                    <span class="text-xs text-gray-400">Asking Salary:</span>
-                    <span class="font-bold">${{ number_format($application->expected_salary) }}</span>
+                <div class="flex flex-col items-end gap-y-2">
+                    <div>
+                        <span class="text-xs text-gray-400">Asking Salary:</span>
+                        <span class="font-bold">${{ number_format($application->expected_salary) }}</span>
+                    </div>
+                    <div>
+                        <span class="text-xs text-gray-400">Avg. Asking Salary:</span>
+                        <span class="font-bold">${{ number_format($application->job->applications_avg_expected_salary) }}</span>
+                    </div>
+                    <div>
+                        <span class="text-xs text-gray-400">Other Applicants:</span>
+                        <span class="font-bold">{{ $application->job->applications_count - 1 }}</span>
+                    </div>
                 </div>
             </div>
         </div>
