@@ -9,6 +9,12 @@ class Job extends Model
 {
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
+
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
+
     public static array $experience =  ['entry', 'intermediate', 'senior'];
     public static array $categories =  ['IT', 'Finance', 'Sales', 'Marketing'];
 
