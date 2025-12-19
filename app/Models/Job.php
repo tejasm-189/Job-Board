@@ -29,6 +29,7 @@ class Job extends Model
                 fn($q) =>
                 $q->where('title', 'like', '%' . $search . '%')
                     ->orWhere('description', 'like', '%' . $search . '%')
+                    ->orWhereHas('employer', fn($q) => $q->where('name', 'like', '%' . $search . '%'))
             )
         );
 
