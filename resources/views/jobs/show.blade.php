@@ -49,5 +49,17 @@
                 </button>
             </div>
         </section>
+
+        @if($otherJobs->count() > 0)
+        <section>
+            <x-section-heading>Other jobs from {{ $job->employer->name }}</x-section-heading>
+
+            <div class="mt-6 grid lg:grid-cols-3 gap-8">
+                @foreach($otherJobs as $otherJob)
+                <x-job-card :job="$otherJob" />
+                @endforeach
+            </div>
+        </section>
+        @endif
     </div>
 </x-layout>
