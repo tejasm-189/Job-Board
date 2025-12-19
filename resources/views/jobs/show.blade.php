@@ -44,9 +44,9 @@
                     Location: <span class="text-black dark:text-white font-bold">{{ $job->location }}</span>
                 </div>
 
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+                <a href="/jobs/{{ $job->id }}/application" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
                     Apply Now
-                </button>
+                </a>
             </div>
         </section>
 
