@@ -7,6 +7,16 @@ use App\Models\Job;
 
 class MyJobController extends Controller
 {
+    public function index()
+    {
+        return view('my_job.index', [
+            'jobs' => auth()->user()->employer->jobs()
+                ->with(['employer', 'applications'])
+                ->latest()
+                ->get()
+        ]);
+    }
+
     public function create()
     {
         return view('my_job.create');

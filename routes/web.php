@@ -16,6 +16,7 @@ Route::get('/employer', [App\Http\Controllers\EmployerController::class, 'create
 Route::post('/employer', [App\Http\Controllers\EmployerController::class, 'store'])->middleware('auth');
 
 Route::middleware('auth', 'employer')->group(function () {
+    Route::get('/my-jobs', [App\Http\Controllers\MyJobController::class, 'index']);
     Route::get('/jobs/create', [App\Http\Controllers\MyJobController::class, 'create']);
     Route::post('/my-jobs', [App\Http\Controllers\MyJobController::class, 'store']);
 });
