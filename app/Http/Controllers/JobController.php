@@ -12,28 +12,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::latest()->with(['tags']); // optimizing query if tags relationship existed, but here direct columns
-
-        $jobs = Job::query();
-
-        if (request('search')) {
-            $jobs->where('title', 'like', '%' . request('search') . '%')
-                ->orWhere('description', 'like', '%' . request('search') . '%');
-        }
-
-        if (request('category')) {
-            $jobs->where('category', request('category'));
-        }
-
-        if (request('experience')) {
-            $jobs->where('experience', request('experience'));
-        }
-
-        if (request('salary')) {
-            $jobs->where('salary', '>=', (int) request('salary'));
-        }
-
-        $jobs = $jobs->get();
+        $jobs = Job::latest()->filter(request(['search', 'category', 'experience', 'salary']))->get();
 
         return view('welcome', [
             'jobs' => $jobs,
