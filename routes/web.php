@@ -16,3 +16,4 @@ Route::get('/jobs/{job}/application', [App\Http\Controllers\JobApplicationContro
 Route::post('/jobs/{job}/application', [App\Http\Controllers\JobApplicationController::class, 'store'])->middleware('auth');
 
 Route::get('/my-job-applications', [App\Http\Controllers\MyJobApplicationController::class, 'index'])->name('my-job-applications.index')->middleware('auth');
+Route::delete('/my-job-applications/{myJobApplication}', [App\Http\Controllers\MyJobApplicationController::class, 'destroy'])->name('my-job-applications.destroy')->middleware('auth');

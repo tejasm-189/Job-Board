@@ -29,6 +29,12 @@
                         <span class="font-bold">{{ $application->job->applications_count - 1 }}</span>
                     </div>
                 </div>
+
+                <form method="POST" action="{{ route('my-job-applications.destroy', $application) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-500 hover:text-red-700 font-bold text-sm">Cancel</button>
+                </form>
             </div>
         </div>
         @empty
