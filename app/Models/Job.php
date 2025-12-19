@@ -16,23 +16,32 @@ class Job extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        if ($filters['search'] ?? false) {
-            $query->where(function ($q) use ($filters) {
-                $q->where('title', 'like', '%' . $filters['search'] . '%')
-                    ->orWhere('description', 'like', '%' . $filters['search'] . '%');
-            });
-        }
+        $query->when(
+            $filters['search'] ?? false,
+            fn($query, $search) =>
+            $query->where(
+                fn($q) =>
+                $q->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%')
+            )
+        );
 
-        if ($filters['category'] ?? false) {
-            $query->where('category', $filters['category']);
-        }
+        $query->when(
+            $filters['category'] ?? false,
+            fn($query, $category) =>
+            $query->where('category', $category)
+        );
 
-        if ($filters['experience'] ?? false) {
-            $query->where('experience', $filters['experience']);
-        }
+        $query->when(
+            $filters['experience'] ?? false,
+            fn($query, $experience) =>
+            $query->where('experience', $experience)
+        );
 
-        if ($filters['salary'] ?? false) {
-            $query->where('salary', '>=', (int) $filters['salary']);
-        }
+        $query->when(
+            $filters['salary'] ?? false,
+            fn($query, $salary) =>
+            $query->where('salary', '>=', (int) $salary)
+        );
     }
 }
