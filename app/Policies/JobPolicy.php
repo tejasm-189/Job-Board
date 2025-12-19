@@ -56,9 +56,9 @@ class JobPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Job $job): bool
+    public function delete(User $user, Job $job): bool|Response
     {
-        return false;
+        return $this->update($user, $job);
     }
 
     /**
