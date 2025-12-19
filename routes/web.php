@@ -21,6 +21,7 @@ Route::middleware('auth', 'employer')->group(function () {
     Route::post('/my-jobs', [App\Http\Controllers\MyJobController::class, 'store']);
     Route::get('/my-jobs/{job}/edit', [App\Http\Controllers\MyJobController::class, 'edit']);
     Route::patch('/my-jobs/{job}', [App\Http\Controllers\MyJobController::class, 'update']);
+    Route::delete('/my-jobs/{job}', [App\Http\Controllers\MyJobController::class, 'destroy']);
 });
 
 Route::get('/jobs/{job}/application', [App\Http\Controllers\JobApplicationController::class, 'create'])->middleware('auth');

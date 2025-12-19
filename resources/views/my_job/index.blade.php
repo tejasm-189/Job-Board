@@ -23,7 +23,11 @@
                 </div>
                 <div class="flex gap-x-2">
                     <a href="/my-jobs/{{ $job->id }}/edit" class="bg-white/10 hover:bg-white/20 text-white font-bold py-2 px-4 rounded transition-colors text-sm">Edit</a>
-                    {{-- Delete will come later or can be added now, but focusing on Edit next --}}
+                    <form method="POST" action="/my-jobs/{{ $job->id }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="bg-red-500/10 hover:bg-red-500/20 text-red-500 font-bold py-2 px-4 rounded transition-colors text-sm" onclick="return confirm('Are you sure you want to delete this job?')">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
